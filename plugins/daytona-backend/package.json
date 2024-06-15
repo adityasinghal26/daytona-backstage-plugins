@@ -27,6 +27,8 @@
     "@backstage/backend-defaults": "^0.2.18",
     "@backstage/backend-plugin-api": "^0.6.18",
     "@backstage/config": "^1.2.0",
+    "@backstage/core-app-api": "^1.12.5",
+    "@backstage/core-plugin-api": "^1.9.2",
     "@backstage/plugin-auth-backend-module-oidc-provider": "^0.1.9",
     "@backstage/plugin-auth-node": "^0.4.13",
     "@types/express": "*",
