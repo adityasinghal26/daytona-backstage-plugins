@@ -67,6 +67,12 @@ auth:
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+    daytona:
+      production:
+        clientId: 'daytona-keycloak-client-id'
+        clientSecret: 'daytona-keycloak-client-secret'
+        metadataUrl: https://id.daytona.com/realms/default/.well-known/openid-configuration
+        prompt: auto
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
