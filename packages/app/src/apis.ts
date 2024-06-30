@@ -8,7 +8,7 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
-import { daytonaApiFactory } from '@daytona/daytona-node';
+import { daytonaApiFactory } from '@daytona/daytona-web';
 
 export const apis: AnyApiFactory[] = [
   createApiFactory({

@@ -4632,7 +4632,7 @@
     pkginfo "^0.4.1"
     uid2 "^1.0.0"
 
-"@daytona/daytona-node@link:packages/daytona-node":
+"@daytona/daytona-web@link:packages/daytona-web":
   version "0.1.0"
   dependencies:
     "@backstage/core-app-api" "^1.13.0"
@@ -10536,7 +10536,7 @@ apg-lite@^1.0.3:
     "@backstage/plugin-techdocs-react" "^1.2.4"
     "@backstage/plugin-user-settings" "^0.8.6"
     "@backstage/theme" "^0.5.4"
-    "@daytona/daytona-node" "link:packages/daytona-node"
+    "@daytona/daytona-web" "link:packages/daytona-web"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     history "^5.0.0"
