@@ -8,6 +8,7 @@ import {
   configApiRef,
   createApiFactory,
 } from '@backstage/core-plugin-api';
+import { daytonaApiFactory } from '@daytona/daytona-node';
 
 export const apis: AnyApiFactory[] = [
   createApiFactory({
@@ -16,4 +17,5 @@ export const apis: AnyApiFactory[] = [
     factory: ({ configApi }) => ScmIntegrationsApi.fromConfig(configApi),
   }),
   ScmAuth.createDefaultApiFactory(),
+  daytonaApiFactory
 ];
