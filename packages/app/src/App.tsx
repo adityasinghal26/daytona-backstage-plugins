@@ -37,6 +37,7 @@ import { CatalogGraphPage } from '@backstage/plugin-catalog-graph';
 import { RequirePermission } from '@backstage/plugin-permission-react';
 import { catalogEntityCreatePermission } from '@backstage/plugin-catalog-common/alpha';
 import { daytonaSignInProvider } from '@daytona/daytona-web';
+import { DaytonaPage } from '@daytona/backstage-plugin-daytona';
 
 const app = createApp({
   apis,
@@ -96,6 +97,7 @@ const routes = (
     </Route>
     <Route path="/settings" element={<UserSettingsPage />} />
     <Route path="/catalog-graph" element={<CatalogGraphPage />} />
+    <Route path="/daytona" element={<DaytonaPage />} />
   </FlatRoutes>
 );
 
