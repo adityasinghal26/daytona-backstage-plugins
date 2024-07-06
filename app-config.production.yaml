@@ -29,6 +29,8 @@ backend:
       #     $file: <file-path>/ca/server.crt
 
 auth:
+  session:
+    secret: dummy
   providers:
     guest: null
 
