@@ -4783,15 +4783,15 @@
     pkginfo "^0.4.1"
     uid2 "^1.0.0"
 
-"@daytona/daytona-web@link:../daytona-web":
-  version "0.0.0"
-  uid ""
-
 "@daytona/daytona-web@link:packages/daytona-web":
   version "0.1.0"
   dependencies:
     "@backstage/core-app-api" "^1.13.0"
     "@backstage/core-plugin-api" "^1.9.3"
+
+"@daytona/daytona-web@link:plugins/daytona-web":
+  version "0.0.0"
+  uid ""
 
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"

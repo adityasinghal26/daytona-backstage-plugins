@@ -21,4 +21,6 @@ export type DaytonaApi = {
 
     getWorkspacesForTeam: (teamId: string) => Promise<WorkspaceList>
 
+    getWorkspacesForTeamInRepo: (teamId: string, repoUrl: string) => Promise<WorkspaceList>
+
 }

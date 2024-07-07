@@ -1,1 +1,1 @@
-export { daytonaPlugin, DaytonaPage } from './plugin';
+export { daytonaPlugin, DaytonaPage, DaytonaOverviewContent } from './plugin';

@@ -1,6 +1,7 @@
 import {
   configApiRef,
   createApiFactory,
+  createComponentExtension,
   createPlugin,
   createRoutableExtension,
 } from '@backstage/core-plugin-api';
@@ -31,3 +32,13 @@ export const DaytonaPage = daytonaPlugin.provide(
     mountPoint: rootRouteRef,
   }),
 );
+
+export const DaytonaOverviewContent = daytonaPlugin.provide(
+  createComponentExtension({
+    name: 'DaytonaOverviewContent',
+    component: {
+      lazy: () =>
+        import('./components/WorkspaceOverviewContent').then(m => m.WorkspaceOverviewContent),
+    }
+  })
+)

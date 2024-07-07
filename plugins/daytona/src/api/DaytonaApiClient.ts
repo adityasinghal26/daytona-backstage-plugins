@@ -39,5 +39,17 @@ export class DaytonaApiClient implements DaytonaApi {
         return workspaceList;
     }
 
+    async getWorkspacesForTeamInRepo(teamId: string, repoUrl: string): Promise<WorkspaceList> {
+        const workspaceList = await this.getDaytona<WorkspaceList>(`/workspace?teamId=${teamId}`);
+        const filteredWorkspaces = workspaceList.items.filter((workspace) => {
+            return (workspace.gitContext.webUrl === repoUrl);
+        });
+        const filteredWorkspaceList = {
+            items: filteredWorkspaces,
+            total: filteredWorkspaces.length,
+        }
+        return filteredWorkspaceList;
+    }
+
 
 }
