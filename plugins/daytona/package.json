@@ -27,6 +27,7 @@
     "@backstage/core-components": "^0.14.7",
     "@backstage/core-plugin-api": "^1.9.2",
     "@backstage/theme": "^0.5.5",
+    "@daytona/daytona-web": "link:../daytona-web",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.61",

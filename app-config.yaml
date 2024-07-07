@@ -77,6 +77,9 @@ auth:
         metadataUrl: https://id.daytona.domain.com/realms/default/.well-known/openid-configuration
         prompt: auto
 
+daytona:
+  apiBaseUrl: https://api.daytona.adisinghal.com/
+
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 

@@ -9,28 +9,28 @@ import {
   HeaderLabel,
   SupportButton,
 } from '@backstage/core-components';
-import { ExampleFetchComponent } from '../ExampleFetchComponent';
+import { WorkspacesListComponent } from '../WorkspaceListComponent';
 
 export const ExampleComponent = () => (
   <Page themeId="tool">
-    <Header title="Welcome to daytona!" subtitle="Optional subtitle">
-      <HeaderLabel label="Owner" value="Team X" />
+    <Header title="Welcome to Daytona!">
+      <HeaderLabel label="Owner" value="Aditya Singhal" />
       <HeaderLabel label="Lifecycle" value="Alpha" />
     </Header>
     <Content>
-      <ContentHeader title="Plugin title">
-        <SupportButton>A description of your plugin goes here.</SupportButton>
+      <ContentHeader title="Daytona Workspaces">
+        <SupportButton>List of Daytona Workspaces.</SupportButton>
       </ContentHeader>
       <Grid container spacing={3} direction="column">
         <Grid item>
           <InfoCard title="Information card">
             <Typography variant="body1">
-              All content should be wrapped in a card like this.
+              The plugin lists all the Daytona Workspaces for the team.
             </Typography>
           </InfoCard>
         </Grid>
         <Grid item>
-          <ExampleFetchComponent />
+          <WorkspacesListComponent />
         </Grid>
       </Grid>
     </Content>

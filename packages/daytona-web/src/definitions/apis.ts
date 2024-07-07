@@ -1,6 +1,7 @@
 import { OAuth2 } from "@backstage/core-app-api";
 import { ApiRef, BackstageIdentityApi, OpenIdConnectApi, ProfileInfoApi, SessionApi, 
-    createApiFactory, createApiRef, discoveryApiRef, oauthRequestApiRef, configApiRef } from "@backstage/core-plugin-api";
+    createApiFactory, createApiRef, discoveryApiRef, oauthRequestApiRef, configApiRef, 
+    OAuthApi} from "@backstage/core-plugin-api";
 
 /**
  * Provides authentication towards Daytona APIs.
@@ -10,7 +11,7 @@ import { ApiRef, BackstageIdentityApi, OpenIdConnectApi, ProfileInfoApi, Session
  *
  */
 export const daytonaAuthApiRef: ApiRef<
-    OpenIdConnectApi & ProfileInfoApi & BackstageIdentityApi & SessionApi
+    OAuthApi & OpenIdConnectApi & ProfileInfoApi & BackstageIdentityApi & SessionApi
 > = createApiRef({
   id: 'auth.daytona.oidc',
 });
