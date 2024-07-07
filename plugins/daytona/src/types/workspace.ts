@@ -1,3 +1,5 @@
+import { GitContext, GitStatus } from "./git";
+
 export enum ClassName {
     "small",
     "medium",
@@ -26,6 +28,32 @@ export enum State {
     "destroying",
     "destroyed",
     "error"
+}
+
+export type WorkspaceFileStatus = {
+    
+    /**
+     * Original location of the file, when the file has been moved
+     */
+    from: string;
+
+    /**
+     * First digit of the status code of the file, e.g. 'M' = modified. 
+     * Represents the status of the index if no merge conflicts
+     */
+    index: string;
+
+    /**
+     * Path of the file
+     */
+    path: string;
+
+    /**
+     * Second digit of the status code of the file. 
+     * Represents status of the working directory if no merge conflicts, 
+     * otherwise represents status of other side of a merge.
+     */
+    workingDir: string;
 }
 
 export type WorkspaceInstance = {
@@ -57,6 +85,10 @@ export type Workspace = {
     createdFromTemplate: boolean;
 
     destroyed: boolean;
+
+    gitContext: GitContext;
+
+    gitStatus: GitStatus;
 
     id: string;
 

@@ -12,19 +12,25 @@ export class DaytonaSdkClient {
     }
     
     private async apiUrl() {
-        const baseUrl = this.configApi.getOptionalString('daytona.apiBaseUrl') ?? '';
-        return baseUrl;
+      const baseUrl = this.configApi.getOptionalString('daytona.apiBaseUrl') ?? 'https://api.daytona.adisinghal.com';
+      console.log('Daytona Config Base URL: ' + `${baseUrl}`); 
+      return baseUrl;
     }
 
     private async addAuthHeaders(init: RequestInit): Promise<RequestInit> {
         const token = await this.daytonaAuthApi.getAccessToken();
         const headers = init.headers || {};
+        // const corsHeaders = {
+        //   "Access-Control-Allow-Origin": "*",
+        //   "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type, Accept",
+        // }
     
         return {
           ...init,
           headers: {
             ...headers,
             ...(token ? { Authorization: `Bearer ${token}` } : {}),
+            // ...corsHeaders,
           }
         };
     }

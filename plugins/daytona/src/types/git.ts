@@ -1,3 +1,20 @@
+import { WorkspaceFileStatus } from "./workspace";
+
+export type GitStatus = {
+
+    ahead: number;
+
+    behind: number;
+
+    current: string;
+
+    detached: boolean;
+
+    files: WorkspaceFileStatus;
+
+    tracking: string;
+}
+
 export type GitContext = {
 
     /**

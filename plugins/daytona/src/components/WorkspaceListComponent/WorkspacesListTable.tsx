@@ -1,7 +1,8 @@
 import React from "react";
 import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
-import { WorkspaceList } from "../../types";
+import { Workspace, WorkspaceList } from "../../types";
 import { Box } from "@material-ui/core";
+import { getGitStatusView } from "../../utils";
 
 const columns: TableColumn[] = [
     {
@@ -9,6 +10,21 @@ const columns: TableColumn[] = [
         field: 'id',
         width: 'auto',
     },
+    {
+        title: 'Repository',
+        field: 'branch',
+        width: 'auto',
+        render: (row: Partial<Workspace>) => row.gitContext?.repo,
+    },
+    {
+        title: 'Ahead/Behind',
+        field: 'gitStatus',
+        width: 'auto',
+        render: (row: Partial<Workspace>) => getGitStatusView({
+            ahead: row.gitStatus?.ahead,
+            behind: row.gitStatus?.behind,
+        })
+    }
 ];
 
 type WorkspaceListTableProps = {
