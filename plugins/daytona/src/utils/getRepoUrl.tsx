@@ -1,3 +1,4 @@
+import { Link } from "@material-ui/core";
 import React from "react";
 
 /**
@@ -6,13 +7,13 @@ import React from "react";
  * @param props - the argument with ahead and behind value
  * @returns a React JSX element with Commit Status in the format ahead/behind
  */
-export const getGitStatus = (props: {
-    ahead?: number;
-    behind?: number;
+export const getRepoUrl = (props: {
+    repo?: string;
+    webUrl?: string;
 }) => {
   return (
     <>
-      {getGitStatusView(props)}
+      {loadRepoUrl(props)}
     </>
   );
 };
@@ -25,14 +26,21 @@ export const getGitStatus = (props: {
 * @param props - the argument with ahead and behind value
 * @returns the value with Commit Status in the format ahead/behind
 */
-export function getGitStatusView({
-  ahead,
-  behind
+export function loadRepoUrl({
+  repo,
+  webUrl
 }: {
-  ahead?: number;
-  behind?: number;
+  repo?: string;
+  webUrl?: string;
 }) {
-  if (ahead === undefined || behind === undefined) return null;
-  const answer = `${ahead}/${behind}`;
-  return answer;
+    const url = webUrl ? (
+        <Link
+          href={`${webUrl}`}
+          target="_blank"
+          rel="noopener">
+          {repo}
+        </Link>
+      ) : (repo);
+
+    return url;
 }

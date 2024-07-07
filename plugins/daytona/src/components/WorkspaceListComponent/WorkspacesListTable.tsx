@@ -2,7 +2,7 @@ import React from "react";
 import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { Workspace, WorkspaceList } from "../../types";
 import { Box } from "@material-ui/core";
-import { getGitStatusView } from "../../utils";
+import { getGitStatusView, getRepoUrl, getWorkspaceState } from "../../utils";
 
 const columns: TableColumn[] = [
     {
@@ -14,7 +14,16 @@ const columns: TableColumn[] = [
         title: 'Repository',
         field: 'branch',
         width: 'auto',
-        render: (row: Partial<Workspace>) => row.gitContext?.repo,
+        render: (row: Partial<Workspace>) => getRepoUrl({
+            repo: row.gitContext?.repo,
+            webUrl: row.gitContext?.webUrl,
+        })
+    },
+    {
+        title: 'Current Branch',
+        field: 'cuurentBranch',
+        width: 'auto',
+        render: (row: Partial<Workspace>) => row.gitStatus?.current,
     },
     {
         title: 'Ahead/Behind',
@@ -24,7 +33,15 @@ const columns: TableColumn[] = [
             ahead: row.gitStatus?.ahead,
             behind: row.gitStatus?.behind,
         })
-    }
+    },
+    {
+        title: 'State',
+        field: 'state',
+        width: 'auto',
+        render: (row: Partial<Workspace>) => getWorkspaceState({
+            status: row.workspaceInstance?.state,
+        }),
+    },
 ];
 
 type WorkspaceListTableProps = {
