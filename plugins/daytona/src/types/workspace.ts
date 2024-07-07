@@ -6,28 +6,28 @@ export enum ClassName {
     "large"
 }
 
-export enum State {
-    "none",
-    "initializing",
-    "pendingArchive",
-    "archiving",
-    "archived",
-    "pendingCreate",
-    "creating",
-    "created",
-    "pendingRestore",
-    "restoring",
-    "restored",
-    "pendingStop",
-    "stopping",
-    "stopped",
-    "pendingStart",
-    "starting",
-    "started",
-    "pendingDestroy",
-    "destroying",
-    "destroyed",
-    "error"
+export const enum State {
+    none            = "none",
+    initializing    = "initializing",
+    pendingArchive  = "pendingArchive",
+    archiving       = "archiving",
+    archived        = "archived",
+    pendingCreate   = "pendingCreate",
+    creating        = "creating",
+    created         = "created",
+    pendingRestore  = "pendingRestore",
+    restoring       = "restoring",
+    restored        = "restored",
+    pendingStop     = "pendingStop",
+    stopping        = "stopping",
+    stopped         = "stopped",
+    pendingStart    = "pendingStart",
+    starting        = "starting",
+    started         = "started",
+    pendingDestroy  = "pendingDestroy",
+    destroying      = "destroying",
+    destroyed       = "destroyed",
+    error           = "error",
 }
 
 export type WorkspaceFileStatus = {
