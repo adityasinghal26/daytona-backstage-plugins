@@ -11,7 +11,7 @@ import {
 } from '@backstage/core-components';
 import { WorkspaceListComponent, WorkspaceListComponentTeam } from '../WorkspaceListComponent';
 
-export const ExampleComponent = () => (
+export const WorkspaceComponent = () => (
   <Page themeId="tool">
     <Header title="Welcome to Daytona!">
       <HeaderLabel label="Owner" value="Aditya Singhal" />
@@ -25,7 +25,7 @@ export const ExampleComponent = () => (
         <Grid item>
           <InfoCard title="Information card">
             <Typography variant="body1">
-              The plugin lists all the Daytona Workspaces for the team.
+              The plugin lists all the workspaces for the teams associated with the user.
             </Typography>
           </InfoCard>
         </Grid>

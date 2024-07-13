@@ -100,7 +100,7 @@ export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWo
                 <Box display="flex" alignItems="center">
                     <GitHubIcon/>
                     <Box mr={1} />
-                    Daytona Workspaces for Team '{team}' - List ({data?.total})
+                    Workspaces for Team '{team}' - List ({data?.total})
                 </Box>
             }
             data={data?.items ?? []}
