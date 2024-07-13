@@ -2,13 +2,17 @@ import React from "react";
 import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { Workspace, WorkspaceList } from "../../types";
 import { Box } from "@material-ui/core";
-import { getGitStatusView, getRepoUrl, getWorkspaceState } from "../../utils";
+import { getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
 
 const columns: TableColumn[] = [
     {
         title: 'Workspace',
         field: 'id',
         width: 'auto',
+        render: (row: Partial<Workspace>) => getWorkspaceUrl({
+            name: row.id,
+            url: `https://${row.id}.daytona.adisinghal.com`,
+        })
     },
     {
         title: 'Team',
