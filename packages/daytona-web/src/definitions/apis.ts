@@ -30,7 +30,7 @@ factory: ({ discoveryApi, oauthRequestApi, configApi }) =>
         oauthRequestApi,
         provider: {
             id: 'daytona',
-            title: 'Daytona OIDC Auth Provider',
+            title: 'Daytona',
             icon: () => null,
         },
         environment: configApi.getOptionalString('auth.environment'),
