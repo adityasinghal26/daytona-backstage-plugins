@@ -116,7 +116,7 @@ export type WorkspaceList = {
     total: number;
 }
 
-export type WorkspaceListByTeam = {
+export type WorkspaceListWithTeam = {
 
     workspaceList: WorkspaceList,
 
