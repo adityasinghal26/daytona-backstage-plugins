@@ -77,7 +77,7 @@ type WorkspaceListTableProps = {
     error?: Error;
 }
 
-export const WorkspacesListTable = ({ team, data, loading, error}: WorkspaceListTableProps) => {
+export const WorkspaceListTable = ({ team, data, loading, error}: WorkspaceListTableProps) => {
     if (error) {
         return (
             <div>

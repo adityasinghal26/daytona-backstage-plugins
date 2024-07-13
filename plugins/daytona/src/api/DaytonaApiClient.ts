@@ -1,5 +1,5 @@
 import { DaytonaApi } from "./DaytonaApi";
-import { GitContext, Options, Team, User, WorkspaceList } from "../types";
+import { CustomWorkspace, CustomWorkspaceList, GitContext, Options, Team, User, WorkspaceList, WorkspaceListWithTeam } from "../types";
 import { DaytonaSdkClient } from "./DaytonaSdkClient";
 
 /**
@@ -39,11 +39,46 @@ export class DaytonaApiClient implements DaytonaApi {
         return workspaceList;
     }
 
+    async getCustomWorkspacesForTeam(teamId: string): Promise<CustomWorkspaceList> {
+        const workspaceList = await this.getWorkspacesForTeam(teamId);
+        const teamName = (await this.getTeam(teamId)).name;
+        const customWorkspaces: CustomWorkspace[] = workspaceList.items.map(workspace => {
+            const customWorkspace = { workspace, teamName };
+            return customWorkspace;
+        })
+        const customWorkspaceList = { items: customWorkspaces, total: workspaceList.total };
+        return customWorkspaceList;
+    }
+
+    async getWorkspacesWithTeam(teamId: string): Promise<WorkspaceListWithTeam>{
+        const workspaceList = await this.getWorkspacesForTeam(teamId);
+        const team = await this.getTeam(teamId);
+        return { workspaceList, team };
+    }
+
     async getAllWorkspaces(): Promise<WorkspaceList[]> {
         const teams = await this.getTeams();
         const teamIDs = teams.map(team => team.id);
         const allWorkspaceLists = teamIDs.map(teamId => 
             this.getWorkspacesForTeam(teamId)
+        )
+        return Promise.all(allWorkspaceLists);
+    }
+
+    async getAllCustomWorkspaces(): Promise<CustomWorkspaceList[]> {
+        const teams = await this.getTeams();
+        const teamIDs = teams.map(team => team.id);
+        const allCustomWorkspaceLists = teamIDs.map(teamId => 
+            this.getCustomWorkspacesForTeam(teamId)
+        )
+        return Promise.all(allCustomWorkspaceLists); 
+    }
+
+    async getAllWorkspacesWithTeam(): Promise<WorkspaceListWithTeam[]> {
+        const teams = await this.getTeams();
+        const teamIDs = teams.map(team => team.id);
+        const allWorkspaceLists = teamIDs.map(teamId => 
+            this.getWorkspacesWithTeam(teamId)
         )
         return Promise.all(allWorkspaceLists);
     }
@@ -63,6 +98,11 @@ export class DaytonaApiClient implements DaytonaApi {
     async getTeams(): Promise<Team[]> {
         const teams = await this.getDaytona<Team[]>(`/team`);
         return teams;
+    }
+
+    async getTeam(teamId: string): Promise<Team> {
+        const team = await this.getDaytona<Team>(`/team/${teamId}`);
+        return team;
     }
 
     async getUser(): Promise<User> {

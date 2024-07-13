@@ -1,2 +1,2 @@
 export * from './WorkspaceListComponent';
-export * from './WorkspacesListComponentTeam';
+export * from './WorkspaceListComponentTeam';
