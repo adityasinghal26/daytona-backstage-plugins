@@ -1,9 +1,9 @@
 import React from "react";
-import { useGetWorkspacesForTeam } from "../../hooks";
+import { useGetAllWorkspaces } from "../../hooks/useGetAllWorkspaces";
 import { WorkspacesListTable } from "./WorkspacesListTable";
 
 export const WorkspacesListComponent = () => {
-    const { value, loading, error } = useGetWorkspacesForTeam();
+    const { workspaceList, loading, error } = useGetAllWorkspaces();
 
-    return <WorkspacesListTable data={value} loading={loading} error={error} />;
+    return <WorkspacesListTable team="All" data={workspaceList} loading={loading} error={error} />;
 }

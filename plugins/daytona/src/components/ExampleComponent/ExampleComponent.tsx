@@ -9,7 +9,7 @@ import {
   HeaderLabel,
   SupportButton,
 } from '@backstage/core-components';
-import { WorkspacesListComponent } from '../WorkspaceListComponent';
+import { WorkspacesListComponent, WorkspacesListComponentTeam } from '../WorkspaceListComponent';
 
 export const ExampleComponent = () => (
   <Page themeId="tool">
@@ -31,6 +31,7 @@ export const ExampleComponent = () => (
         </Grid>
         <Grid item>
           <WorkspacesListComponent />
+          <WorkspacesListComponentTeam />
         </Grid>
       </Grid>
     </Content>

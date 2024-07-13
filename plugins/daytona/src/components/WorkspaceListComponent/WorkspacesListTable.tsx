@@ -11,6 +11,12 @@ const columns: TableColumn[] = [
         width: 'auto',
     },
     {
+        title: 'Team',
+        field: 'team',
+        width: 'auto',
+        render: (row: Partial<Workspace>) => row.teamId,
+    },
+    {
         title: 'Repository',
         field: 'branch',
         width: 'auto',
@@ -47,6 +53,11 @@ const columns: TableColumn[] = [
 type WorkspaceListTableProps = {
 
     /**
+     * Team Details for the title
+     */
+    team: string;
+
+    /**
      * List of filtered Workspaces with all the details
      */
     data?: WorkspaceList;
@@ -62,7 +73,7 @@ type WorkspaceListTableProps = {
     error?: Error;
 }
 
-export const WorkspacesListTable = ({ data, loading, error}: WorkspaceListTableProps) => {
+export const WorkspacesListTable = ({ team, data, loading, error}: WorkspaceListTableProps) => {
     if (error) {
         return (
             <div>
@@ -85,7 +96,7 @@ export const WorkspacesListTable = ({ data, loading, error}: WorkspaceListTableP
                 <Box display="flex" alignItems="center">
                     <GitHubIcon/>
                     <Box mr={1} />
-                    Daytona Workspaces - List ({data?.total})
+                    Daytona Workspaces for Team '{team}' - List ({data?.total})
                 </Box>
             }
             data={data?.items ?? []}

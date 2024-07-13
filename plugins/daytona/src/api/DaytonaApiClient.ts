@@ -1,5 +1,5 @@
 import { DaytonaApi } from "./DaytonaApi";
-import { GitContext, Options, WorkspaceList } from "../types";
+import { GitContext, Options, Team, User, WorkspaceList } from "../types";
 import { DaytonaSdkClient } from "./DaytonaSdkClient";
 
 /**
@@ -39,6 +39,15 @@ export class DaytonaApiClient implements DaytonaApi {
         return workspaceList;
     }
 
+    async getAllWorkspaces(): Promise<WorkspaceList[]> {
+        const teams = await this.getTeams();
+        const teamIDs = teams.map(team => team.id);
+        const allWorkspaceLists = teamIDs.map(teamId => 
+            this.getWorkspacesForTeam(teamId)
+        )
+        return Promise.all(allWorkspaceLists);
+    }
+
     async getWorkspacesForTeamInRepo(teamId: string, repoUrl: string): Promise<WorkspaceList> {
         const workspaceList = await this.getDaytona<WorkspaceList>(`/workspace?teamId=${teamId}`);
         const filteredWorkspaces = workspaceList.items.filter((workspace) => {
@@ -49,6 +58,16 @@ export class DaytonaApiClient implements DaytonaApi {
             total: filteredWorkspaces.length,
         }
         return filteredWorkspaceList;
+    }
+
+    async getTeams(): Promise<Team[]> {
+        const teams = await this.getDaytona<Team[]>(`/team`);
+        return teams;
+    }
+
+    async getUser(): Promise<User> {
+        const user = await this.getDaytona<User>(`/user`);
+        return user;
     }
 
 

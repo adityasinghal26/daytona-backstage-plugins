@@ -1,5 +1,5 @@
 import { createApiRef } from "@backstage/core-plugin-api";
-import { GitContext, WorkspaceList } from "../types";
+import { GitContext, Team, User, WorkspaceList } from "../types";
 
 
 /** 
@@ -21,6 +21,12 @@ export type DaytonaApi = {
 
     getWorkspacesForTeam: (teamId: string) => Promise<WorkspaceList>
 
+    getAllWorkspaces: () => Promise<WorkspaceList[]>
+
     getWorkspacesForTeamInRepo: (teamId: string, repoUrl: string) => Promise<WorkspaceList>
+
+    getTeams: () => Promise<Team[]>
+
+    getUser: () => Promise<User>
 
 }

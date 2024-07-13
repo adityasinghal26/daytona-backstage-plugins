@@ -1,23 +1,21 @@
 import { useApi } from "@backstage/core-plugin-api";
-import { WorkspaceList } from "../types";
 import { daytonaApiRef } from "../api";
 import useAsync from "react-use/esm/useAsync";
+import { Team } from "../types";
 
-export function useGetWorkspacesForTeam(teamId: string): {
-    value?: WorkspaceList;
-    loading: boolean;
-    error?: Error;
+export function useGetTeam(): {
+    value?: Team[],
+    loading: boolean,
+    error?: Error,
 } {
     const api = useApi(daytonaApiRef);
-
     const { value, loading, error } = useAsync(() => {
-        return api.getWorkspacesForTeam(teamId);
+        return api.getTeams();
     }, [api]);
 
     return {
         value,
         loading,
-        error,
-    };
-
+        error
+    }
 }

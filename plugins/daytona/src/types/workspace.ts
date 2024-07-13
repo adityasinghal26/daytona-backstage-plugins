@@ -1,4 +1,5 @@
 import { GitContext, GitStatus } from "./git";
+import { Team } from "./team";
 
 export enum ClassName {
     "small",
@@ -113,4 +114,11 @@ export type WorkspaceList = {
     items: Workspace[];
 
     total: number;
+}
+
+export type WorkspaceListByTeam = {
+
+    workspaceList: WorkspaceList,
+
+    team: Team,
 }
