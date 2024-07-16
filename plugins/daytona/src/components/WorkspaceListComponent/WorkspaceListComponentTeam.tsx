@@ -4,7 +4,7 @@ import { CustomWorkspaceListTable } from "./CustomWorkspaceListTable";
 import { errorApiRef, useApi } from "@backstage/core-plugin-api";
 
 export const WorkspaceListComponentTeam = () => {
-    const teamId: string = '50970272-29c4-4f8b-8e75-3af6c26a3ce1';
+    const teamId: string = '5c2aaeeb-5088-4e79-9ab1-5d4324968a60';
     const team = useGetTeam(teamId);
     const errorApi = useApi(errorApiRef);
     const { value, loading, error } = useGetCustomWorkspacesForTeam(teamId);
