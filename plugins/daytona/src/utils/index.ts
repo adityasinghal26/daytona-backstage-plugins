@@ -1,3 +1,4 @@
+export * from './createWorkspaceUrl';
 export * from './getGitStatusView';
 export * from './getRepoUrl';
 export * from './getRepoUrlFromAnnotations';

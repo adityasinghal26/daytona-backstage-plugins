@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Grid, Link } from '@material-ui/core';
+import { Typography, Grid } from '@material-ui/core';
 import {
   InfoCard,
   Header,
@@ -9,8 +9,7 @@ import {
   HeaderLabel,
   SupportButton,
 } from '@backstage/core-components';
-import { WorkspaceListComponent, WorkspaceListComponentTeam } from '../WorkspaceListComponent';
-import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
+import { WorkspaceListComponent } from '../WorkspaceListComponent';
 
 export const WorkspaceComponent = () => (
   <Page themeId="tool">
@@ -28,17 +27,11 @@ export const WorkspaceComponent = () => (
             <Typography variant="body1">
               The plugin lists all the workspaces for the teams associated with the user.
             </Typography>
-            <Link
-              href='https://daytona.adisinghal.com/new'
-              target="_blank"
-              rel="noopener">
-              <AddCircleOutline />
-            </Link>
           </InfoCard>
         </Grid>
         <Grid item>
           <WorkspaceListComponent />
-          <WorkspaceListComponentTeam />
+          {/* <WorkspaceListComponentTeam /> */}
         </Grid>
       </Grid>
     </Content>

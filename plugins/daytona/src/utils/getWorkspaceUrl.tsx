@@ -9,11 +9,14 @@ import React from "react";
  */
 export const getWorkspaceUrl = (props: {
     name?: string;
-    url?: string;
+    domain?: string;
 }) => {
+  const { name, domain } = props;
+  const url = `https://${name}.${domain}`
+  
   return (
     <>
-      {loadUrl(props)}
+      {loadUrl({name, url})}
     </>
   );
 };

@@ -1,8 +1,9 @@
 import React from "react";
-import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
+import { GitHubIcon, InfoCard, Link, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
-import { Box } from "@material-ui/core";
-import { getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
+import { Box, Typography } from "@material-ui/core";
+import { createWorkspaceUrl, getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
+import { configApiRef, useApi } from "@backstage/core-plugin-api";
 
 const columns: TableColumn[] = [
     {
@@ -11,7 +12,7 @@ const columns: TableColumn[] = [
         width: 'auto',
         render: (row: Partial<CustomWorkspace>) => getWorkspaceUrl({
             name: row.workspace?.id,
-            url: `https://${row.workspace?.id}.daytona.adisinghal.com`,
+            domain: row.domain,
         })
     },
     {
@@ -78,32 +79,57 @@ type CustomWorkspaceListTableProps = {
 }
 
 export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWorkspaceListTableProps) => {
+
+    const config = useApi(configApiRef)
+    const daytonaHost = config.getString('daytona.domain');
+    const url = `https://${daytonaHost}/new`;
+
     if (error) {
         return (
             <div>
-                <ResponseErrorPanel error={error}/>
+                <ResponseErrorPanel title={error.message} error={error} />
             </div>
         );
     }
 
     return (
-        <Table
-            isLoading={loading}
-            columns={columns}
-            options={{
-                search: true,
-                paging: true,
-                pageSize: 5,
-                showEmptyDataSourceMessage: !loading,
-            }}
-            title={
-                <Box display="flex" alignItems="center">
-                    <GitHubIcon/>
-                    <Box mr={1} />
-                    Workspaces for Team '{team}' - List ({data?.total})
-                </Box>
-            }
-            data={data?.items ?? []}
-        />
+        <InfoCard
+            title="Recent Workspaces"
+            subheader={team ? `Team: ${team}` : 'All Teams'}
+            noPadding
+            action={createWorkspaceUrl(daytonaHost)}>
+            {!data?.total ? (
+                <div style={{ textAlign: 'center' }}>
+                <Typography variant="body1">
+                    This component has Daytona Workspaces enabled, but no workspaces were
+                    found.
+                </Typography>
+                <Typography variant="body2">
+                    <Link to={`${url}`} >
+                    Create a new Daytona Workspace
+                    </Link>
+                </Typography>
+                </div>
+            ) : (
+            <Table
+                isLoading={loading}
+                columns={columns}
+                options={{
+                    search: true,
+                    paging: true,
+                    pageSize: 5,
+                    showEmptyDataSourceMessage: !loading,
+                }}
+                title={
+                    <Box display="flex" alignItems="center">
+                        <GitHubIcon/>
+                        <Box mr={1} />
+                        Workspaces - List ({data?.total})
+                    </Box>
+                }
+                data={data?.items ?? []}
+            />
+            )}
+        </InfoCard>
     );
 };

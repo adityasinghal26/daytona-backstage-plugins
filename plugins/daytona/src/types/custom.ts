@@ -5,6 +5,8 @@ export type CustomWorkspace = {
     workspace: Workspace;
 
     teamName: string;
+
+    domain: string;
 }
 
 export type CustomWorkspaceList = {

@@ -12,9 +12,13 @@ export class DaytonaSdkClient {
     }
     
     private async apiUrl() {
-      const baseUrl = this.configApi.getOptionalString('daytona.apiBaseUrl') ?? 'https://api.daytona.adisinghal.com';
-      console.log('Daytona Config Base URL: ' + `${baseUrl}`); 
+      const baseUrl = `https://api.${this.configApi.getString('daytona.domain')}`;
       return baseUrl;
+    }
+
+    public async getDomain() {
+      const domain = this.configApi.getString('daytona.domain');
+      return domain;
     }
 
     private async addAuthHeaders(init: RequestInit): Promise<RequestInit> {

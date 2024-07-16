@@ -42,8 +42,9 @@ export class DaytonaApiClient implements DaytonaApi {
     async getCustomWorkspacesForTeam(teamId: string): Promise<CustomWorkspaceList> {
         const workspaceList = await this.getWorkspacesForTeam(teamId);
         const teamName = (await this.getTeam(teamId)).name;
+        const domain = await this.client.getDomain();
         const customWorkspaces: CustomWorkspace[] = workspaceList.items.map(workspace => {
-            const customWorkspace = { workspace, teamName };
+            const customWorkspace = { workspace, teamName, domain };
             return customWorkspace;
         })
         const customWorkspaceList = { items: customWorkspaces, total: workspaceList.total };

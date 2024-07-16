@@ -78,7 +78,7 @@ auth:
         prompt: auto
 
 daytona:
-  apiBaseUrl: https://api.daytona.adisinghal.com/
+  domain: daytona.adisinghal.com
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options

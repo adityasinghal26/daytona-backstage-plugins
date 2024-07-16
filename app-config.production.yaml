@@ -56,3 +56,6 @@ catalog:
       target: ../../examples/org.yaml
       rules:
         - allow: [User, Group]
+
+daytona:
+  domain: daytona.adisinghal.com
