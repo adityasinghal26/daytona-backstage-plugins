@@ -29,11 +29,15 @@ export type DaytonaApi = {
 
     getCustomWorkspacesForTeam: (teamId: string) => Promise<CustomWorkspaceList>
 
+    getCustomWorkspacesForTeamInRepo: (teamId: string, repoUrl: string) => Promise<CustomWorkspaceList>
+
     getWorkspacesWithTeam: (teamId: string) => Promise<WorkspaceListWithTeam>
 
     getAllWorkspaces: () => Promise<WorkspaceList[]>
 
     getAllCustomWorkspaces: () => Promise<CustomWorkspaceList[]>
+
+    getAllCustomWorkspacesInRepo: (repoUrl: string) => Promise<CustomWorkspaceList[]>
 
     getAllWorkspacesWithTeam: () => Promise<WorkspaceListWithTeam[]>
 

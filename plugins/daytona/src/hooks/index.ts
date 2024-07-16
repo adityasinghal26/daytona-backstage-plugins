@@ -1,4 +1,5 @@
 export * from './useGetAllCustomWorkspaces';
+export * from './useGetAllCustomWorkspacesInRepo';
 export * from './useGetCustomWorkspacesForTeam';
 export * from './useGetTeam';
 export * from './useGetTeams';

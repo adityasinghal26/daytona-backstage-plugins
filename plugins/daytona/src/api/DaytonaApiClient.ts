@@ -51,6 +51,21 @@ export class DaytonaApiClient implements DaytonaApi {
         return customWorkspaceList;
     }
 
+    async getCustomWorkspacesForTeamInRepo(teamId: string, repoUrl: string): Promise<CustomWorkspaceList> {
+        const workspaceList = await this.getWorkspacesForTeam(teamId);
+        const teamName = (await this.getTeam(teamId)).name;
+        const domain = await this.client.getDomain();
+        const customWorkspaces: CustomWorkspace[] = workspaceList.items.map(workspace => {
+            const customWorkspace = { workspace, teamName, domain };
+            return customWorkspace;
+        })
+        const filteredCustomWorkspaces = customWorkspaces.filter((customWorkspace) => {
+            return (customWorkspace.workspace.gitContext.webUrl === repoUrl);
+        }); 
+        const customWorkspaceList = { items: filteredCustomWorkspaces, total: workspaceList.total };
+        return customWorkspaceList;
+    }
+
     async getWorkspacesWithTeam(teamId: string): Promise<WorkspaceListWithTeam>{
         const workspaceList = await this.getWorkspacesForTeam(teamId);
         const team = await this.getTeam(teamId);
@@ -71,6 +86,15 @@ export class DaytonaApiClient implements DaytonaApi {
         const teamIDs = teams.map(team => team.id);
         const allCustomWorkspaceLists = teamIDs.map(teamId => 
             this.getCustomWorkspacesForTeam(teamId)
+        )
+        return Promise.all(allCustomWorkspaceLists); 
+    }
+
+    async getAllCustomWorkspacesInRepo(repoUrl: string): Promise<CustomWorkspaceList[]> {
+        const teams = await this.getTeams();
+        const teamIDs = teams.map(team => team.id);
+        const allCustomWorkspaceLists = teamIDs.map(teamId => 
+            this.getCustomWorkspacesForTeamInRepo(teamId, repoUrl)
         )
         return Promise.all(allCustomWorkspaceLists); 
     }
