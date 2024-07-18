@@ -31,15 +31,7 @@ export const authModuleDaytonaProvider = createBackendModule({
                 );
               }
               // Split the email into the local part and the domain.
-              const [localPart, domain] = profile.email.split('@');
-            
-              // Next we verify the email domain. It is recommended to include this
-              // kind of check if you don't look up the user in an external service.
-              if (domain !== 'gmail.com') {
-                throw new Error(
-                  `Login failed, '${profile.email}' does not belong to the expected domain`,
-                );
-              }
+              const [localPart] = profile.email.split('@');
             
               // By using `stringifyEntityRef` we ensure that the reference is formatted correctly
               const userEntity = stringifyEntityRef({
@@ -47,6 +39,8 @@ export const authModuleDaytonaProvider = createBackendModule({
                 name: localPart,
                 namespace: DEFAULT_NAMESPACE,
               });
+
+              // Issue an access token for an entity with email localPart
               return ctx.issueToken({
                 claims: {
                   sub: userEntity,
