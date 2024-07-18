@@ -13,6 +13,11 @@
   "backstage": {
     "role": "web-library"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adityasinghal26/daytona-backstage-plugins",
+    "directory": "plugins/daytona-web"
+  },
   "sideEffects": false,
   "scripts": {
     "start": "backstage-cli package start",
@@ -27,6 +32,12 @@
     "@backstage/cli": "^0.26.5",
     "@testing-library/jest-dom": "^6.0.0"
   },
+  "keywords": [
+    "backstage",
+    "plugin",
+    "daytona",
+    "web"
+  ],
   "files": [
     "dist"
   ],

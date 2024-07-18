@@ -13,6 +13,11 @@
   "backstage": {
     "role": "frontend-plugin"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/adityasinghal26/daytona-backstage-plugins",
+    "directory": "plugins/daytona"
+  },
   "sideEffects": false,
   "scripts": {
     "start": "backstage-cli package start",
@@ -48,6 +53,12 @@
     "@testing-library/user-event": "^14.0.0",
     "msw": "^1.0.0"
   },
+  "keywords": [
+    "backstage",
+    "plugin",
+    "daytona",
+    "frontend"
+  ],
   "files": [
     "dist",
     "config.d.ts"
