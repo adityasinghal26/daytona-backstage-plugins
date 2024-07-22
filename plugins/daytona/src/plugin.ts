@@ -8,7 +8,7 @@ import {
 
 import { rootRouteRef } from './routes';
 import { DaytonaApiClient, daytonaApiRef } from './api';
-import { daytonaAuthApiRef } from '@daytona/daytona-web';
+import { daytonaAuthApiRef } from '@adityasinghal26/daytona-web';
 
 export const daytonaPlugin = createPlugin({
   id: 'daytona',

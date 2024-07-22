@@ -1,4 +1,4 @@
-# @daytona/daytona-web
+# @adityasinghal26/daytona-web
 
 _This package was created through the Backstage CLI_.
 
@@ -8,5 +8,5 @@ Install the package via Yarn:
 
 ```sh
 cd <package-dir> # if within a monorepo
-yarn add @daytona/daytona-web
+yarn add @adityasinghal26/daytona-web
 ```

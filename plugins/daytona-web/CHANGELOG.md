@@ -1,4 +1,4 @@
-# @daytona/daytona-web
+# @adityasinghal26/daytona-web
 
 ## 0.1.0
 

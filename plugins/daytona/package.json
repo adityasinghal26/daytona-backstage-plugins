@@ -1,5 +1,5 @@
 {
-  "name": "@daytona/backstage-plugin-daytona",
+  "name": "@adityasinghal26/backstage-plugin-daytona",
   "version": "0.1.0",
   "main": "src/index.ts",
   "types": "src/index.ts",
@@ -34,7 +34,7 @@
     "@backstage/core-plugin-api": "^1.9.2",
     "@backstage/plugin-catalog-react": "^1.12.0",
     "@backstage/theme": "^0.5.5",
-    "@daytona/daytona-web": "link:../daytona-web",
+    "@adityasinghal26/daytona-web": "link:../daytona-web",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.61",

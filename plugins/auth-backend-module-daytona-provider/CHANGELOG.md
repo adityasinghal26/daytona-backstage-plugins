@@ -1,4 +1,4 @@
-# @daytona/backstage-plugin-auth-backend-module-daytona-provider
+# @adityasinghal26/backstage-plugin-auth-backend-module-daytona-provider
 
 ## 0.1.0
 
