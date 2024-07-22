@@ -22,7 +22,7 @@
     "lint": "backstage-cli repo lint --since origin/main",
     "lint:all": "backstage-cli repo lint",
     "prettier:check": "prettier --check .",
-    "new": "backstage-cli new --scope @daytona"
+    "new": "backstage-cli new --scope @adityasinghal26"
   },
   "workspaces": {
     "packages": [
@@ -54,5 +54,8 @@
     "*.{json,md}": [
       "prettier --write"
     ]
+  },
+  "dependencies": {
+    "@changesets/cli": "^2.27.7"
   }
 }

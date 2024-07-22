@@ -63,10 +63,25 @@ techdocs:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 
 auth:
+  session:
+    secret: dummy
+  environment: production
   # see https://backstage.io/docs/auth/ to learn about auth providers
   providers:
     # See https://backstage.io/docs/auth/guest/provider
     guest: {}
+    daytona:
+      production:
+        clientId: daytona-client-id
+        clientSecret: daytona-client-secret
+        metadataUrl: https://id.daytona.domain.com/realms/default/.well-known/openid-configuration
+        prompt: auto
+        signIn:
+          resolvers:
+            - resolver: emailLocalPartMatchingUserEntityName
+
+daytona:
+  domain: daytona.adisinghal.com
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
