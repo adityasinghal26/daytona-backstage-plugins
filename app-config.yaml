@@ -76,6 +76,9 @@ auth:
         clientSecret: daytona-client-secret
         metadataUrl: https://id.daytona.domain.com/realms/default/.well-known/openid-configuration
         prompt: auto
+        signIn:
+          resolvers:
+            - resolver: emailLocalPartMatchingUserEntityName
 
 daytona:
   domain: daytona.adisinghal.com
