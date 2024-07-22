@@ -1,5 +1,13 @@
 # @adityasinghal26/daytona-web
 
+## 0.1.1
+
+### Patch Changes
+
+- Update plugin documentation for below features:
+  - package installation in Backstage app
+  - authentication and sign-in using Daytona Keycloak
+
 ## 0.1.0
 
 ### Minor Changes
