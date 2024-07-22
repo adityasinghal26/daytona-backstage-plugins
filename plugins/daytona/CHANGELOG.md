@@ -1,5 +1,15 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.1.1
+
+### Patch Changes
+
+- Update plugin documentation for below features:
+  - list of features provided
+  - package installation and setup in Backstage app
+  - backstage app and Daytona ingress CORS configuration
+  - setup authentication with Keycloak
+
 ## 0.1.0
 
 ### Minor Changes
