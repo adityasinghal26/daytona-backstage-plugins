@@ -1,0 +1,40 @@
+name: Backstage App Build
+
+on:
+  workflow_dispatch:
+  
+  pull_request:
+    branches: [main]
+
+jobs:
+  build:
+    env:
+      NODE_OPTIONS: --max-old-space-size=4096
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [20]
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Check TypeScript compilation
+        run: yarn tsc
+
+      - name: Verify lint
+        run: yarn lint:all
+
+      - name: Build backend package
+        run: cd packages/backend && yarn build backend --config ../../app-config.yaml
+
+      - name: Build docker image
+        run: yarn build-image
