@@ -94,21 +94,20 @@ export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWo
 
     return (
         <InfoCard
-            title="Recent Workspaces"
-            subheader={team ? `Team: ${team}` : 'All Teams'}
+            title={team ? `Team: ${team}` : 'All Teams'}
             noPadding
             action={createWorkspaceUrl(daytonaHost)}>
             {!data?.total ? (
                 <div style={{ textAlign: 'center' }}>
-                <Typography variant="body1">
-                    This component has Daytona Workspaces enabled, but no workspaces were
-                    found.
-                </Typography>
-                <Typography variant="body2">
-                    <Link to={`${url}`} >
-                    Create a new Daytona Workspace
-                    </Link>
-                </Typography>
+                    <Typography variant="body1">
+                        This component has Daytona Workspaces enabled, but no workspaces were
+                        found.
+                    </Typography>
+                    <Typography variant="body2">
+                        <Link to={`${url}`} >
+                        Create a new Daytona Workspace
+                        </Link>
+                    </Typography>
                 </div>
             ) : (
             <Table
