@@ -128,6 +128,9 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityAboutCard variant="gridItem" />
     </Grid>
+    <Grid item md={6}>
+      <DaytonaOverviewContent />
+    </Grid>
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
@@ -137,9 +140,6 @@ const overviewContent = (
     </Grid>
     <Grid item md={8} xs={12}>
       <EntityHasSubcomponentsCard variant="gridItem" />
-    </Grid>
-    <Grid item md={12} xs={12}>
-      <DaytonaOverviewContent />
     </Grid>
   </Grid>
 );
