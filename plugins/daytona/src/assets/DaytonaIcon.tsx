@@ -1,7 +1,8 @@
+import { IconComponentProps } from '@backstage/core-components';
 import { SvgIcon, SvgIconProps } from '@material-ui/core';
 import React from 'react';
 
-const DaytonaIcon = (props: SvgIconProps) => (
+const DaytonaSvgIcon = (props: SvgIconProps) => (
     <SvgIcon {...props} >
         <svg width="24" height="24" viewBox="0 0 211 220" fill="none" xmlns="http://www.w3.org/2000/svg">
             <rect x="11.1428" y="149.025" width="76.2474" height="26.1421" fill="currentColor"/>
@@ -15,5 +16,10 @@ const DaytonaIcon = (props: SvgIconProps) => (
         </svg>
     </SvgIcon>  
 );
+
+/** @public */
+export function DaytonaIcon(props: IconComponentProps) {
+    return <DaytonaSvgIcon id="daytona" {...props} />;
+  }
 
 export default DaytonaIcon;

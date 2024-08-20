@@ -26,6 +26,7 @@ import {
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import { DaytonaIcon } from '@adityasinghal26/backstage-plugin-daytona';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -72,7 +73,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
-          <SidebarItem icon={MapIcon} to="daytona" text="Daytona" />
+          <SidebarItem icon={DaytonaIcon} to="daytona" text="Daytona" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
       </SidebarGroup>
