@@ -1,15 +1,16 @@
 import { useApi } from "@backstage/core-plugin-api";
 import { CustomWorkspaceList } from "../types";
 import { daytonaApiRef } from "../api";
-import useAsync from "react-use/esm/useAsync";
+import { useAsyncRetry } from "react-use";
 
 export function useGetAllCustomWorkspaces(): {
     workspaceList?: CustomWorkspaceList;
     loading: boolean;
     error?: Error;
+    retry: () => void;
 } {
     const api = useApi(daytonaApiRef);
-    const { value, loading, error } = useAsync(() => {
+    const { value, loading, error, retry } = useAsyncRetry(() => {
         return api.getAllCustomWorkspaces();
     }, [api]);
 
@@ -26,5 +27,6 @@ export function useGetAllCustomWorkspaces(): {
         workspaceList,
         loading,
         error,
+        retry,
     };
 }

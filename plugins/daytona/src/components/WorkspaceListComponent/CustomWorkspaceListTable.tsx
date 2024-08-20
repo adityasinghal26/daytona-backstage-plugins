@@ -1,8 +1,8 @@
 import React from "react";
-import { GitHubIcon, InfoCard, Link, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
+import { GitHubIcon, Link, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
-import { Box, Typography } from "@material-ui/core";
-import { createWorkspaceUrl, getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
+import { LinearProgress, Typography } from "@material-ui/core";
+import { getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
 import { configApiRef, useApi } from "@backstage/core-plugin-api";
 
 const columns: TableColumn[] = [
@@ -48,7 +48,7 @@ const columns: TableColumn[] = [
     {
         title: 'State',
         field: 'state',
-        width: 'auto',
+        width: '10%',
         render: (row: Partial<CustomWorkspace>) => getWorkspaceState({
             status: row.workspace?.workspaceInstance?.state,
         }),
@@ -76,9 +76,15 @@ type CustomWorkspaceListTableProps = {
      * Error details of the React Hook
      */
     error?: Error;
+
+    /**
+     * Retry mechanism for the React Hook
+     * @returns void
+     */
+    retry: () => void;
 }
 
-export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWorkspaceListTableProps) => {
+export const CustomWorkspaceListTable = ({ data, loading, error }: CustomWorkspaceListTableProps) => {
 
     const config = useApi(configApiRef)
     const daytonaHost = config.getString('daytona.domain');
@@ -92,16 +98,23 @@ export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWo
         );
     }
 
+    if(loading) {
+        return (
+            <div>
+                <LinearProgress />
+            </div>
+        )
+    }
+
     return (
-        <InfoCard
-            title={team ? `Team: ${team}` : 'All Teams'}
-            noPadding
-            action={createWorkspaceUrl(daytonaHost)}>
+        <>
             {!data?.total ? (
-                <div style={{ textAlign: 'center' }}>
-                    <Typography variant="body1">
-                        This component has Daytona Workspaces enabled, but no workspaces were
-                        found.
+                <div style={{ display: 'block', textAlign: 'center', padding: '10%' }}>
+                    <GitHubIcon />
+                    <Typography variant="body1" style={{ display: 'block', wordWrap: "break-word" }}>
+                        <span style={{ display: 'block', textAlign: 'center' }}>
+                            This component has Daytona Workspaces enabled, but no workspaces were found.
+                        </span>
                     </Typography>
                     <Typography variant="body2">
                         <Link to={`${url}`} >
@@ -120,15 +133,11 @@ export const CustomWorkspaceListTable = ({ team, data, loading, error}: CustomWo
                     showEmptyDataSourceMessage: !loading,
                 }}
                 title={
-                    <Box display="flex" alignItems="center">
-                        <GitHubIcon/>
-                        <Box mr={1} />
-                        Workspaces - List ({data?.total})
-                    </Box>
+                    <>List ({data?.total})</>
                 }
                 data={data?.items ?? []}
             />
             )}
-        </InfoCard>
+        </>
     );
 };

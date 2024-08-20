@@ -4,7 +4,6 @@ import {
   Header,
   Page,
   Content,
-  ContentHeader,
   HeaderLabel,
 } from '@backstage/core-components';
 import { WorkspaceListComponent } from '../WorkspaceListComponent';
@@ -16,11 +15,9 @@ export const WorkspaceComponent = () => (
       <HeaderLabel label="Lifecycle" value="Alpha" />
     </Header>
     <Content>
-      <ContentHeader title="Daytona Workspaces" />
       <Grid container spacing={3} direction="column">
         <Grid item>
           <WorkspaceListComponent />
-          {/* <WorkspaceListComponentTeam /> */}
         </Grid>
       </Grid>
     </Content>

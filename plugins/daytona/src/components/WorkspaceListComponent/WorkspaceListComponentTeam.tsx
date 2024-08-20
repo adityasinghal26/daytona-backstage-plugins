@@ -7,7 +7,7 @@ export const WorkspaceListComponentTeam = () => {
     const teamId: string = '5c2aaeeb-5088-4e79-9ab1-5d4324968a60';
     const team = useGetTeam(teamId);
     const errorApi = useApi(errorApiRef);
-    const { value, loading, error } = useGetCustomWorkspacesForTeam(teamId);
+    const { value, loading, error, retry } = useGetCustomWorkspacesForTeam(teamId);
 
     useEffect(() => {
         if(error) {
@@ -15,5 +15,5 @@ export const WorkspaceListComponentTeam = () => {
         }
     },[error, errorApi]);
 
-    return <CustomWorkspaceListTable team={team.value?.name} data={value} loading={loading} error={error} />;
+    return <CustomWorkspaceListTable retry={retry} team={team.value?.name} data={value} loading={loading} error={error} />;
 }
