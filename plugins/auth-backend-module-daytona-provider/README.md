@@ -42,7 +42,12 @@ In the above configuration, below are the options need to be handled.
 
 ## Installation and Setup
 
-The plugin can be installed by adding the following in your Backstage backend.
+The plugin can be installed by running the below command in Backstage root directory and later, adding the following in your Backstage backend.
+
+```sh
+# From your Backstage root directory
+yarn --cwd packages/backend add @adityasinghal26/backstage-plugin-auth-backend-module-daytona-provider
+```
 
 ```ts
 // In packages/backend/src/index.ts

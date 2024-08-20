@@ -34,7 +34,7 @@ yarn --cwd packages/app add @adityasinghal26/backstage-plugin-daytona
     yarn add --cwd packages/app @adityasinghal26/backstage-plugin-daytona
     ```
 
-2. Add to the app `EntityPage` component:
+2. Add to the app `EntityPage` component. Make sure to add `DaytonaOverviewComponent` right after `EntityAboutCard` under `overviewContent`.
 
     ```tsx
     import { DaytonaOverviewContent } from '@adityasinghal26/backstage-plugin-daytona';
@@ -42,11 +42,13 @@ yarn --cwd packages/app add @adityasinghal26/backstage-plugin-daytona
     // Add the DaytonaOverviewContent to show the workspaces for that entity
     const overviewContent = (
       <Grid container spacing={3} alignItems="stretch">
-        {/* other grid items here*/}
-
-        <Grid item md={12} xs={12}>
+        <Grid item md={6}>
+          <EntityAboutCard variant="gridItem" />
+        </Grid>
+        <Grid item md={6}>
           <DaytonaOverviewContent />
         </Grid>
+        {/* other grid items here*/}
       </Grid>
     );
     ```
@@ -95,7 +97,7 @@ Ensure that the package is installed as mentioned in the Installation section.
 
     ```tsx
     // In packages/app/src/components/Root/App.tsx
-    import MapIcon from '@material-ui/icons/MyLocation';
+    import { DaytonaIcon } from '@adityasinghal26/backstage-plugin-daytona';
 
     // Add the menu to the Root menu sidebar
     export const Root = ({ children }: PropsWithChildren<{}>) => (
@@ -103,7 +105,7 @@ Ensure that the package is installed as mentioned in the Installation section.
         <Sidebar>
         {/* other sidebar items here */}
         {/* add inside "Menu" SidebarGroup */}
-          <SidebarItem icon={MapIcon} to="daytona" text="Daytona" />
+          <SidebarItem icon={DaytonaIcon} to="daytona" text="Daytona" />
         {/* other sidebar items here */}
         </Sidebar>
         {children}
