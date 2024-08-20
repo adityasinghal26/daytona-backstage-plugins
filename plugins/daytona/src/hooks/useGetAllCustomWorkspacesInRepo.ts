@@ -1,21 +1,23 @@
 import { useApi } from "@backstage/core-plugin-api";
 import { CustomWorkspaceList } from "../types";
 import { daytonaApiRef } from "../api";
-import useAsync from "react-use/esm/useAsync";
+import { useAsyncRetry } from "react-use";
 import { Entity } from "@backstage/catalog-model";
 import { getRepoUrlFromAnnotations } from "../utils";
 
 export function useGetAllCustomWorkspacesInRepo(
     entity: Entity,
 ): {
+    repoUrl: string;
     value?: CustomWorkspaceList;
     loading: boolean;
     error?: Error;
+    retry: () => void;
 } {
     const api = useApi(daytonaApiRef);
     const repoUrl: string = getRepoUrlFromAnnotations(entity);
 
-    const { value, loading, error } = useAsync(() => {
+    const { value, loading, error, retry } = useAsyncRetry(() => {
         return api.getAllCustomWorkspacesInRepo(repoUrl);
     }, [api]);
 
@@ -29,9 +31,11 @@ export function useGetAllCustomWorkspacesInRepo(
     }
 
     return {
+        repoUrl,
         value: workspaceList,
         loading,
         error,
+        retry,
     };
 
 }
