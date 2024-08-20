@@ -1,9 +1,10 @@
 import React from "react";
-import { GitHubIcon, Link, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
+import { Link, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
 import { LinearProgress, Typography } from "@material-ui/core";
 import { getGitStatusView, getRepoUrl, getWorkspaceState, getWorkspaceUrl } from "../../utils";
 import { configApiRef, useApi } from "@backstage/core-plugin-api";
+import DaytonaIcon from "../../assets/DaytonaIcon";
 
 const columns: TableColumn[] = [
     {
@@ -110,7 +111,7 @@ export const CustomWorkspaceListTable = ({ data, loading, error }: CustomWorkspa
         <>
             {!data?.total ? (
                 <div style={{ display: 'block', textAlign: 'center', padding: '10%' }}>
-                    <GitHubIcon />
+                    <DaytonaIcon />
                     <Typography variant="body1" style={{ display: 'block', wordWrap: "break-word" }}>
                         <span style={{ display: 'block', textAlign: 'center' }}>
                             This component has Daytona Workspaces enabled, but no workspaces were found.

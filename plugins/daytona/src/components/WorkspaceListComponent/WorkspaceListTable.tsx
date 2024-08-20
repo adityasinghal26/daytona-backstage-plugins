@@ -1,8 +1,9 @@
 import React from "react";
-import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
+import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { Workspace, WorkspaceList } from "../../types";
 import { Box } from "@material-ui/core";
 import { getGitStatusView, getRepoUrl, getWorkspaceState } from "../../utils";
+import DaytonaIcon from "../../assets/DaytonaIcon";
 
 const columns: TableColumn[] = [
     {
@@ -94,7 +95,7 @@ export const WorkspaceListTable = ({ team, data, loading, error}: WorkspaceListT
             }}
             title={
                 <Box display="flex" alignItems="center">
-                    <GitHubIcon/>
+                    <DaytonaIcon/>
                     <Box mr={1} />
                     Daytona Workspaces for Team '{team}' - List ({data?.total})
                 </Box>

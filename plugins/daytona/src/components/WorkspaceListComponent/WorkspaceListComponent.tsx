@@ -3,9 +3,9 @@ import { useGetAllCustomWorkspaces } from "../../hooks";
 import { CustomWorkspaceListTable } from "./CustomWorkspaceListTable";
 import { configApiRef, errorApiRef, useApi } from "@backstage/core-plugin-api";
 import { Box, Card, CardContent, CardHeader, Divider, IconButton, Tooltip } from "@material-ui/core";
-import { GitHubIcon } from "@backstage/core-components";
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
 import SyncIcon from '@material-ui/icons/Sync';
+import DaytonaIcon from "../../assets/DaytonaIcon";
 
 export const WorkspaceListComponent = () => {
     const errorApi = useApi(errorApiRef);
@@ -32,7 +32,7 @@ export const WorkspaceListComponent = () => {
                 title={
                     <>
                         <Box display="flex" alignItems="center" >
-                            <GitHubIcon/> 
+                            <DaytonaIcon/> 
                             <Box mr={1} width={2}/>
                             Recent Workspaces
                         </Box>  

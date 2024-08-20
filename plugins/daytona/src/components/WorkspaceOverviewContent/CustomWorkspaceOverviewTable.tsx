@@ -1,8 +1,9 @@
 import React from "react";
-import { GitHubIcon, ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
+import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
 import { LinearProgress, Typography } from "@material-ui/core";
 import { getGitStatusView, getWorkspaceState, getWorkspaceUrl } from "../../utils";
+import DaytonaIcon from "../../assets/DaytonaIcon";
 
 const columns: TableColumn[] = [
     {
@@ -96,7 +97,7 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error }: Cus
         <>
             {!data?.total ? (
                 <div style={{ display: 'block', textAlign: 'center', padding: '16%' }}>
-                    <GitHubIcon />
+                    <DaytonaIcon />
                     <Typography variant="body1" style={{ display: 'block', wordWrap: "break-word" }}>
                         <span style={{ display: 'block', textAlign: 'center' }}>
                             No workspaces found for repo

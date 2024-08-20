@@ -6,7 +6,7 @@ import { configApiRef, useApi } from "@backstage/core-plugin-api";
 import { Box, Card, CardContent, CardHeader, Divider, IconButton, Tooltip } from "@material-ui/core";
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
 import SyncIcon from '@material-ui/icons/Sync';
-import { GitHubIcon } from "@backstage/core-components";
+import DaytonaIcon from "../../assets/DaytonaIcon";
 
 export const WorkspaceOverviewContent = () => {
     const { entity } = useEntity();
@@ -27,7 +27,7 @@ export const WorkspaceOverviewContent = () => {
                 title={
                     <>
                         <Box display="flex" alignItems="center" >
-                            <GitHubIcon/> 
+                            <DaytonaIcon/> 
                             <Box mr={1} width={2}/>
                             Daytona Workspaces
                         </Box>  
