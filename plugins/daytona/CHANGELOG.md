@@ -1,5 +1,14 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.2.0
+
+### Minor Changes
+
+- Update Daytona menu page and overview card for UI layout
+  - Fix create workspace button for appropriate repository URL in Overview card
+  - Create refresh button to update the workspace details
+  - Create `DaytonaIcon` logo for all the icon requirements
+
 ## 0.1.1
 
 ### Patch Changes

@@ -1,5 +1,11 @@
 # @adityasinghal26/backstage-plugin-auth-backend-module-daytona-provider
 
+## 0.1.2
+
+### Patch Changes
+
+- Update readme for installation command
+
 ## 0.1.1
 
 ### Patch Changes
