@@ -6,3 +6,4 @@ export * from './useGetTeams';
 export * from './useGetUser';
 export * from './useGetWorkspacesForTeam';
 export * from './useGetWorkspacesForTeamInRepo';
+export * from './useRepoUrlFromEntity';

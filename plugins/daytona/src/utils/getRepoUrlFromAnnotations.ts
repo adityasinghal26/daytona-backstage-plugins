@@ -12,4 +12,4 @@ export const DAYTONA_WORKSPACE_ANNOTATION = 'daytona.io/repo-url';
  * @returns the value of the project slug in the entity defintion annotations
  */
 export const getRepoUrlFromAnnotations = (entity: Entity) => 
-    entity?.metadata.annotations?.[DAYTONA_WORKSPACE_ANNOTATION] ?? '';
+    entity?.metadata.annotations?.[DAYTONA_WORKSPACE_ANNOTATION];

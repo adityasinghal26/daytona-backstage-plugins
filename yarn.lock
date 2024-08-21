@@ -2,6 +2,12 @@
 # yarn lockfile v1
 
 
+"@adityasinghal26/daytona-web@link:plugins/daytona-web":
+  version "0.1.1"
+  dependencies:
+    "@backstage/core-app-api" "^1.13.0"
+    "@backstage/core-plugin-api" "^1.9.3"
+
 "@adobe/css-tools@^4.4.0":
   version "4.4.0"
   resolved "https://registry.yarnpkg.com/@adobe/css-tools/-/css-tools-4.4.0.tgz#728c484f4e10df03d5a3acd0d8adcbbebff8ad63"
@@ -4994,12 +5000,6 @@
     passport-oauth2 "^1.6.1"
     pkginfo "^0.4.1"
     uid2 "^1.0.0"
-
-"@adityasinghal26/daytona-web@link:plugins/daytona-web":
-  version "0.1.0"
-  dependencies:
-    "@backstage/core-app-api" "^1.13.0"
-    "@backstage/core-plugin-api" "^1.9.3"
 
 "@emotion/babel-plugin@^11.11.0":
   version "11.11.0"
@@ -10001,9 +10001,9 @@
     "@types/react" "*"
 
 "@types/react@*", "@types/react@^16.13.1 || ^17.0.0", "@types/react@^16.13.1 || ^17.0.0 || ^18.0.0", "@types/react@^18":
-  version "18.3.3"
-  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.3.tgz#9679020895318b0915d7a3ab004d92d33375c45f"
-  integrity sha512-hti/R0pS0q1/xx+TsI73XIqk26eBsISZ2R0wUijXIngRK9R/e7Xw/cXVxQK7R5JjW+SV4zGcn5hXjudkN/pLIw==
+  version "18.3.4"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-18.3.4.tgz#dfdd534a1d081307144c00e325c06e00312c93a3"
+  integrity sha512-J7W30FTdfCxDDjmfRM+/JqLHBIyl7xUIp9kwK637FGmY7+mkSFSe6L4jpZzhj5QMfLssSDP4/i75AKkrdC7/Jw==
   dependencies:
     "@types/prop-types" "*"
     csstype "^3.0.2"
@@ -10876,6 +10876,8 @@ apg-lite@^1.0.3:
 "app@link:packages/app":
   version "0.0.0"
   dependencies:
+    "@adityasinghal26/backstage-plugin-daytona" "^0.2.0"
+    "@adityasinghal26/daytona-web" "^0.1.0"
     "@backstage/app-defaults" "^1.5.5"
     "@backstage/catalog-model" "^1.5.0"
     "@backstage/cli" "^0.26.5"
@@ -10899,8 +10901,6 @@ apg-lite@^1.0.3:
     "@backstage/plugin-techdocs-react" "^1.2.4"
     "@backstage/plugin-user-settings" "^0.8.6"
     "@backstage/theme" "^0.5.4"
-    "@adityasinghal26/backstage-plugin-daytona" "^0.1.0"
-    "@adityasinghal26/daytona-web" "^0.1.0"
     "@material-ui/core" "^4.12.2"
     "@material-ui/icons" "^4.9.1"
     history "^5.0.0"
@@ -15438,6 +15438,13 @@ git-url-parse@^14.0.0:
   version "14.0.0"
   resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-14.0.0.tgz#18ce834726d5fbca0c25a4555101aa277017418f"
   integrity sha512-NnLweV+2A4nCvn4U/m2AoYu0pPKlsmhK9cknG7IMwsjFY1S2jxM+mAhsDxyxfCIGfGaD+dozsyX4b6vkYc83yQ==
+  dependencies:
+    git-up "^7.0.0"
+
+git-url-parse@^14.1.0:
+  version "14.1.0"
+  resolved "https://registry.yarnpkg.com/git-url-parse/-/git-url-parse-14.1.0.tgz#01cb70000666c11a7230aceec1fd518c416c224c"
+  integrity sha512-8xg65dTxGHST3+zGpycMMFZcoTzAdZ2dOtu4vmgIfkTFnVHBxHMzBC2L1k8To7EmrSiHesT8JgPLT91VKw1B5g==
   dependencies:
     git-up "^7.0.0"
 

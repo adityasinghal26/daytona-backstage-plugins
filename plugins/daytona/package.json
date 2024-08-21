@@ -28,15 +28,17 @@
     "postpack": "backstage-cli package postpack"
   },
   "dependencies": {
+    "@adityasinghal26/daytona-web": "link:../daytona-web",
     "@backstage/catalog-model": "^1.5.0",
     "@backstage/core-components": "^0.14.7",
     "@backstage/core-plugin-api": "^1.9.2",
+    "@backstage/integration-react": "^1.1.27",
     "@backstage/plugin-catalog-react": "^1.12.0",
     "@backstage/theme": "^0.5.5",
-    "@adityasinghal26/daytona-web": "link:../daytona-web",
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.61",
+    "git-url-parse": "^14.1.0",
     "react-use": "^17.2.4"
   },
   "peerDependencies": {
