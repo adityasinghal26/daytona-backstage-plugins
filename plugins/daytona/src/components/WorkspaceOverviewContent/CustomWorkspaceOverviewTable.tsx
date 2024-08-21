@@ -39,7 +39,8 @@ const columns: TableColumn[] = [
     {
         title: 'State',
         field: 'state',
-        width: '20%',
+        width: 'auto',
+        cellStyle: { whiteSpace: 'nowrap' },
         render: (row: Partial<CustomWorkspace>) => getWorkspaceState({
             status: row.workspace?.workspaceInstance?.state,
         }),
