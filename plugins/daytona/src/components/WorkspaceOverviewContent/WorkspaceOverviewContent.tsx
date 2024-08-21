@@ -36,7 +36,7 @@ export const WorkspaceOverviewContent = () => {
             <CardHeader 
                 title={
                     <>
-                        <Box display="flex" alignItems="center" >
+                        <Box display="flex" alignItems="center" marginBottom={2}>
                             <DaytonaIcon/> 
                             <Box mr={1} width={2}/>
                             Daytona Workspaces
