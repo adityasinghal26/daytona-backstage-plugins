@@ -65,7 +65,7 @@ export const WorkspaceOverviewContent = () => {
                 }/>
             <Divider />
             <CardContent style={{ padding: 0 }}>
-                <CustomWorkspaceOverviewTable retry={retry} repo={repoUrl} data={value} loading={loading} error={error} />
+                <CustomWorkspaceOverviewTable retry={retry} repo={repoUrl} createUrl={createUrl} data={value} loading={loading} error={error} />
             </CardContent>
         </Card>
     );

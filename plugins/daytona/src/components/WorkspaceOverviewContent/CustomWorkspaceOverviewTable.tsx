@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
-import { Typography } from "@material-ui/core";
+import { Button, Typography } from "@material-ui/core";
 import { getGitStatusView, getWorkspaceState, getWorkspaceUrl } from "../../utils";
 import DaytonaIcon from "../../assets/DaytonaIcon";
 
@@ -74,9 +74,14 @@ type CustomWorkspaceOverviewTableProps = {
      * @returns void
      */
     retry: () => void;
+
+    /**
+     * Workspace Create URL for the component
+     */
+    createUrl?: string;
 }
 
-export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error }: CustomWorkspaceOverviewTableProps) => {
+export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error, createUrl }: CustomWorkspaceOverviewTableProps) => {
 
     if (error) {
         return (
@@ -89,7 +94,7 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error }: Cus
     return (
         <>
             {!data?.total ? (
-                <div style={{ display: 'block', textAlign: 'center', padding: '16%' }}>
+                <div style={{ display: 'block', textAlign: 'center', padding: '10%' }}>
                     <DaytonaIcon />
                     <Typography variant="body1" style={{ display: 'block', wordWrap: "break-word" }}>
                         <span style={{ display: 'block', textAlign: 'center' }}>
@@ -99,6 +104,13 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error }: Cus
                         {/* No workspace found for repository
                         <span style={{display: 'block'}}>{repo}</span> */}
                     </Typography>
+                    <div style={{padding: '3%', }}>
+                        <Button variant="contained" color="primary">
+                            <a href={createUrl} target="_blank" rel="noopener noreferer">
+                                Create Workspace
+                            </a>
+                        </Button>
+                    </div>
                 </div>
             ) : (
             <Table
