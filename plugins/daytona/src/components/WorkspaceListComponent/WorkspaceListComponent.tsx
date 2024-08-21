@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useGetAllCustomWorkspaces } from "../../hooks";
 import { CustomWorkspaceListTable } from "./CustomWorkspaceListTable";
-import { configApiRef, errorApiRef, useApi } from "@backstage/core-plugin-api";
+import { alertApiRef, configApiRef, errorApiRef, useApi } from "@backstage/core-plugin-api";
 import { Box, Card, CardContent, CardHeader, Divider, IconButton, Tooltip } from "@material-ui/core";
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
 import SyncIcon from '@material-ui/icons/Sync';
@@ -24,6 +24,16 @@ export const WorkspaceListComponent = () => {
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
         if (newWindow) newWindow.opener = null
+    }
+
+    const alertApi = useApi(alertApiRef);
+    const refresh = () => {
+        retry();
+        alertApi.post({
+            message: 'Syncing Workspaces', 
+            severity: 'info', 
+            display: 'transient' 
+        });
     }
 
     return (
@@ -52,7 +62,7 @@ export const WorkspaceListComponent = () => {
                     <Tooltip title="Sync Workspaces">
                         <IconButton
                             aria-label="Refresh"
-                            onClick={retry}
+                            onClick={refresh}
                         >
                             <SyncIcon />
                         </IconButton>

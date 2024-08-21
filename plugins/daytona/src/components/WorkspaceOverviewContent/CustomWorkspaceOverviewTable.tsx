@@ -1,7 +1,7 @@
 import React from "react";
 import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
-import { LinearProgress, Typography } from "@material-ui/core";
+import { Typography } from "@material-ui/core";
 import { getGitStatusView, getWorkspaceState, getWorkspaceUrl } from "../../utils";
 import DaytonaIcon from "../../assets/DaytonaIcon";
 
@@ -83,14 +83,6 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error }: Cus
                 <ResponseErrorPanel title={error.message} error={error} />
             </div>
         );
-    }
-
-    if(loading) {
-        return (
-            <div>
-                <LinearProgress />
-            </div>
-        )
     }
 
     return (
