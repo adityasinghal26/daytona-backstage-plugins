@@ -34,7 +34,7 @@ yarn --cwd packages/app add @adityasinghal26/backstage-plugin-daytona
     yarn add --cwd packages/app @adityasinghal26/backstage-plugin-daytona
     ```
 
-2. Add to the app `EntityPage` component. Make sure to add `DaytonaOverviewComponent` right after `EntityAboutCard` under `overviewContent`.
+2. Add to the app `EntityPage` component. Make sure to add `DaytonaOverviewComponent` right after `EntityAboutCard` under `overviewContent`. This will get the repository URL automatically from the entity location metadata to create the Daytona workspaces. Along with that, it will also list all the workspaces, specific to the repository.
 
     ```tsx
     import { DaytonaOverviewContent } from '@adityasinghal26/backstage-plugin-daytona';
@@ -53,7 +53,7 @@ yarn --cwd packages/app add @adityasinghal26/backstage-plugin-daytona
     );
     ```
 
-3. Annotate your component with a correct Git repository. This will list the workspaces specific to the repository.
+3. Annotate your component with a valid Git repository if you wish to override the automatically configured repository URL for creating Daytona workspaces.
 
    The annotation key is `daytona.io/repo-url`.
 

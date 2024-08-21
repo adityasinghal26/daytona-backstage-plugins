@@ -1,5 +1,17 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.2.1
+
+### Patch Changes
+
+- Improve UI/UX for Daytona menu page and overview card
+  - Remove linear progress bar with alert pop-up while syncing workspaces
+  - Remove wrapping for State icon and description
+  - Add `Create Workspace` button on Overview card to open workspace for entity repository URL
+  - Fix top/bottom spacing for the header in Overview Card
+  - Get repository URL to create workspaces automatically based on entity location metadata
+  - Enable daytona annotation to override the automated repository URL
+
 ## 0.2.0
 
 ### Minor Changes
