@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useGetAllCustomWorkspacesInRepo } from "../../hooks";
 import { useEntity } from '@backstage/plugin-catalog-react';
 import { CustomWorkspaceOverviewTable } from "./CustomWorkspaceOverviewTable";
-import { alertApiRef, configApiRef, useApi } from "@backstage/core-plugin-api";
+import { alertApiRef, configApiRef, errorApiRef, useApi } from "@backstage/core-plugin-api";
 import { Box, Card, CardContent, CardHeader, Divider, IconButton, Tooltip } from "@material-ui/core";
 import AddCircleOutline from "@material-ui/icons/AddCircleOutline";
 import SyncIcon from '@material-ui/icons/Sync';
@@ -10,7 +10,14 @@ import DaytonaIcon from "../../assets/DaytonaIcon";
 
 export const WorkspaceOverviewContent = () => {
     const { entity } = useEntity();
+    const errorApi = useApi(errorApiRef);
     const { repoUrl, value, loading, error, retry } = useGetAllCustomWorkspacesInRepo(entity);
+
+    useEffect(() => {
+        if(error) {
+            errorApi.post(error);
+        }
+    },[error, errorApi]);
 
     const config = useApi(configApiRef);
     const daytonaHost = config.getString('daytona.domain');
