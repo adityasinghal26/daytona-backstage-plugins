@@ -2,7 +2,7 @@ import React from "react";
 import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
 import { Button, LinearProgress, Typography } from "@material-ui/core";
-import { getGitStatusView, getWorkspaceState, getWorkspaceUrl } from "../../utils";
+import { createWorkspaceInfo, getWorkspaceState } from "../../utils";
 import DaytonaIcon from "../../assets/DaytonaIcon";
 
 const columns: TableColumn[] = [
@@ -10,30 +10,10 @@ const columns: TableColumn[] = [
         title: 'Workspace',
         field: 'id',
         width: 'auto',
-        render: (row: Partial<CustomWorkspace>) => getWorkspaceUrl({
+        render: (row: Partial<CustomWorkspace>) => createWorkspaceInfo({
             name: row.workspace?.id,
             domain: row.domain,
-        })
-    },
-    {
-        title: 'Team',
-        field: 'team',
-        width: 'auto',
-        render: (row: Partial<CustomWorkspace>) => row.teamName,
-    },
-    {
-        title: 'Current Branch',
-        field: 'cuurentBranch',
-        width: 'auto',
-        render: (row: Partial<CustomWorkspace>) => row.workspace?.gitStatus?.current,
-    },
-    {
-        title: 'Ahead/Behind',
-        field: 'gitStatus',
-        width: 'auto',
-        render: (row: Partial<CustomWorkspace>) => getGitStatusView({
-            ahead: row.workspace?.gitStatus?.ahead,
-            behind: row.workspace?.gitStatus?.behind,
+            team: row.teamName,
         })
     },
     {
@@ -95,7 +75,7 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error, creat
         return (
             <div>
                 <LinearProgress/>
-                <div style={{ display: 'block', textAlign: 'center', padding: '15%' }}>
+                <div style={{ display: 'block', textAlign: 'center', padding: 'calc(10% - 4px)' }}>
                     <DaytonaIcon />
                     <Typography variant="body1" style={{ display: 'block', wordWrap: "break-word" }}>
                         <span style={{ display: 'block', textAlign: 'center' }}>
@@ -134,10 +114,12 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error, creat
                 isLoading={loading}
                 columns={columns}
                 options={{
-                    search: true,
+                    search: false,
                     paging: true,
                     pageSize: 5,
-                    showTitle: true,
+                    showTitle: false,
+                    header: true,
+                    toolbar: false,
                 }}
                 title={
                     <>List ({data?.total})</>

@@ -39,7 +39,12 @@ export const WorkspaceOverviewContent = () => {
     }
 
     return (
-        <Card>
+        <Card style={{
+            display: 'flex',
+            flexDirection: 'column',
+            height: 'calc(100% - 10px)', // for pages without content header
+            marginBottom: '10px',
+          }}>
             <CardHeader 
                 title={
                     <>

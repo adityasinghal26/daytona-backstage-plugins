@@ -1,4 +1,4 @@
-export * from './createWorkspaceUrl';
+export * from './createWorkspaceInfo';
 export * from './getGitStatusView';
 export * from './getRepoUrl';
 export * from './getRepoUrlFromAnnotations';
