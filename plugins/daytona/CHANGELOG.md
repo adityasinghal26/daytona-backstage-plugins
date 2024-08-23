@@ -1,5 +1,16 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.2.2
+
+### Patch Changes
+
+- Update Overview Content for UX
+  - Minimalise Overview Content table with workspace name and status along with team name
+  - Style card same as About card
+- Update loading state for both Overview Card and Menu Page
+  - Add Linear Progress bar during page load or sync workspaces button
+  - Add `Searching workspaces` during the loading state
+
 ## 0.2.1
 
 ### Patch Changes
