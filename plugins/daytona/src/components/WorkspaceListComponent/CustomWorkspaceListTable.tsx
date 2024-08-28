@@ -138,8 +138,9 @@ export const CustomWorkspaceListTable = ({ data, loading, error }: CustomWorkspa
                 columns={columns}
                 options={{
                     search: true,
-                    paging: true,
+                    paging: false,
                     pageSize: 5,
+                    maxBodyHeight: '60vh',
                     showEmptyDataSourceMessage: !loading,
                 }}
                 title={

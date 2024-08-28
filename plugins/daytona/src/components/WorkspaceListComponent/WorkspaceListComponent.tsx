@@ -70,7 +70,7 @@ export const WorkspaceListComponent = () => {
                 </>
                 }/>
             <Divider />
-            <CardContent style={{ padding: 0 }}>
+            <CardContent style={{ padding: 0, overflow: 'auto', display: 'block' }}>
                 <CustomWorkspaceListTable retry={retry} data={workspaceList} loading={loading} error={error} />
             </CardContent>
         </Card>
