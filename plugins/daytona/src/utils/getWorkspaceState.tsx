@@ -14,11 +14,161 @@ export const getWorkspaceState = (props: {
 }) => {
   return (
     <>
-      <StateIcon {...props} />
-      {getStateDescription(props)}
+      <StateIndicator {...props} />
     </>
   );
 };
+
+/**
+ * Gives a colored dot icon on different Workspace states
+ * @param status for Workspace state  
+ * @returns a colored indicator for the state
+ */
+export function StateIndicator({
+    status,
+  }: {
+    status?: string;
+  }) {
+    
+    let statusColor = '';
+    let statusText = '';
+  
+    switch (status) {
+
+        // Orange States
+        case State.initializing:
+            statusColor = 'orange';
+            statusText = 'Initializing';
+            break;
+
+        case State.archiving:
+            statusColor = 'orange';
+            statusText = 'Archiving';
+            break;
+
+        case State.creating:
+            statusColor = 'orange';
+            statusText = 'Creating';
+            break;
+ 
+        case State.restoring:
+            statusColor = 'orange';
+            statusText = 'Restoring';
+            break;
+
+        case State.stopping:
+            statusColor = 'orange';
+            statusText = 'Stopping';
+            break;
+
+        case State.destroying:
+            statusColor = 'orange';
+            statusText = 'Warning';
+            break;
+
+        // Yellow States
+        case State.pendingArchive:
+            statusColor = 'yellow';
+            statusText = 'Pending Archive';
+            break;
+            
+        case State.pendingCreate:
+            statusColor = 'yellow';
+            statusText = 'Pending Create';
+            break;
+            
+        case State.pendingRestore:
+            statusColor = 'yellow';
+            statusText = 'Pending Restore';
+            break;
+            
+        case State.pendingStop:
+            statusColor = 'yellow';
+            statusText = 'Pending Stop';
+            break;
+            
+        case State.pendingStart:
+            statusColor = 'yellow';
+            statusText = 'Pending Start';
+            break;
+            
+        case State.pendingDestroy:
+            statusColor = 'yellow';
+            statusText = 'Pending Destroy';
+            break;
+            
+        // Gray States
+        case State.archived:
+            statusColor = 'gray';
+            statusText = 'Archived';
+            break;
+            
+        case State.stopped:
+            statusColor = 'gray';
+            statusText = 'Stopped';
+            break;
+            
+        case State.destroyed:
+            statusColor = 'gray';
+            statusText = 'Destroyed';
+            break;
+        
+        // Green States
+        case State.created:
+            statusColor = 'green';
+            statusText = 'Created';
+            break;
+
+        case State.restored:
+            statusColor = 'green';
+            statusText = 'Restored';
+            break;
+
+        case State.started:
+            statusColor = 'green';
+            statusText = 'Created';
+            break;
+        
+
+        case State.starting:
+            statusColor = 'green';
+            statusText = 'Starting';
+            break;
+        
+        // Red States
+        case State.error:
+            statusColor = 'red';
+            statusText = 'Error';
+            break;
+        
+        
+        case State.none:
+            statusColor = 'red';
+            statusText = 'None';
+            break;
+
+        default:
+            statusColor = 'gray';
+            statusText = 'Unknown';
+            break;
+    }
+  
+    return (
+      <div>
+        <div
+          style={{
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            backgroundColor: statusColor,
+            display: 'inline-block',
+            marginRight: '5px',
+          }}
+        />
+        {statusText}
+      </div>
+    );
+  };
 
 /**
  * Gives a dot icon on different Workspace states
