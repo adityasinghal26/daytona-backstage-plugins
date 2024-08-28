@@ -19,7 +19,7 @@ export const WorkspaceListComponent = () => {
 
     const config = useApi(configApiRef);
     const daytonaHost = config.getString('daytona.domain');
-    const createUrl = `https://${daytonaHost}/new`;
+    const createUrl = `https://${daytonaHost}/create`;
 
     const openInNewTab = (url: string): void => {
         const newWindow = window.open(url, '_blank', 'noopener,noreferrer')

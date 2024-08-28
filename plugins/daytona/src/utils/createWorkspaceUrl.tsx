@@ -10,7 +10,7 @@ import React from "react";
  */
 export const createWorkspaceUrl = (daytonaHost: string) => {
 
-  const url = `https://${daytonaHost}/new`;
+  const url = `https://${daytonaHost}/create`;
   
   return (
     <>

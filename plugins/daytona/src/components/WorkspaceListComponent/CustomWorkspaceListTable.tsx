@@ -90,7 +90,7 @@ export const CustomWorkspaceListTable = ({ data, loading, error }: CustomWorkspa
 
     const config = useApi(configApiRef)
     const daytonaHost = config.getString('daytona.domain');
-    const url = `https://${daytonaHost}/new`;
+    const url = `https://${daytonaHost}/create`;
 
     if (error) {
         return (
