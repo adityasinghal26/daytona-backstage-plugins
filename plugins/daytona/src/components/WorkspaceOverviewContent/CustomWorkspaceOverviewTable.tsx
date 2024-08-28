@@ -115,11 +115,12 @@ export const CustomWorkspaceOverviewTable = ({ repo, data, loading, error, creat
                 columns={columns}
                 options={{
                     search: false,
-                    paging: true,
+                    paging: false,
                     pageSize: 5,
                     showTitle: false,
-                    header: true,
+                    header: false,
                     toolbar: false,
+                    maxBodyHeight: '40vh',
                 }}
                 title={
                     <>List ({data?.total})</>
