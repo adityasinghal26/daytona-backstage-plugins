@@ -1,5 +1,11 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.2.4
+
+### Patch Changes
+
+- Fix Menu page for create workspaces URL from `/new` to `/create` endpoint
+
 ## 0.2.3
 
 ### Patch Changes
