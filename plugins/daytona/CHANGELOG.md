@@ -1,5 +1,12 @@
 # @adityasinghal26/backstage-plugin-daytona
 
+## 0.2.3
+
+### Patch Changes
+
+- Create `StateIndicator` for state icon and description instead of in-built Status objects
+- Update tables with scroll capability and removing the pagination for both Overview card and Menu page
+
 ## 0.2.2
 
 ### Patch Changes
