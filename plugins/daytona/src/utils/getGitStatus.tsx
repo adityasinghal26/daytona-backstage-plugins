@@ -10,6 +10,7 @@ export const getGitStatus = (props: {
     ahead?: number;
     behind?: number;
 }) => {
+  if(props.ahead === undefined || props.behind === undefined) return null;
   return (
     <>
       {getGitStatusView(props)}

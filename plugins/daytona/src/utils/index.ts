@@ -1,5 +1,5 @@
 export * from './createWorkspaceInfo';
-export * from './getGitStatusView';
+export * from './getGitStatus';
 export * from './getRepoUrl';
 export * from './getRepoUrlFromAnnotations';
 export * from './getWorkspaceState';

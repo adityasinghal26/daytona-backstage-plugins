@@ -12,6 +12,9 @@ import { State } from "../types";
 export const getWorkspaceState = (props: {
   status?: State;
 }) => {
+
+  if(props.status === undefined) return null; 
+
   return (
     <>
       <StateIndicator {...props} />

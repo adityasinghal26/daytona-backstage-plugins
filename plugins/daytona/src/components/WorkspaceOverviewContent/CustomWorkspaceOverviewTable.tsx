@@ -2,7 +2,7 @@ import React from "react";
 import { ResponseErrorPanel, Table, TableColumn } from "@backstage/core-components";
 import { CustomWorkspace, CustomWorkspaceList } from "../../types";
 import { Button, LinearProgress, Typography } from "@material-ui/core";
-import { createWorkspaceInfo, getWorkspaceState } from "../../utils";
+import { createWorkspaceInfo, getWorkspaceOpenButton } from "../../utils";
 import DaytonaIcon from "../../assets/DaytonaIcon";
 
 const columns: TableColumn[] = [
@@ -10,20 +10,26 @@ const columns: TableColumn[] = [
         title: 'Workspace',
         field: 'id',
         width: 'auto',
+        cellStyle: { whiteSpace: 'nowrap' },
         render: (row: Partial<CustomWorkspace>) => createWorkspaceInfo({
             name: row.workspace?.id,
             domain: row.domain,
             team: row.teamName,
+            branch: row.workspace?.gitStatus?.current,
+            ahead: row.workspace?.gitStatus?.ahead,
+            behind: row.workspace?.gitStatus?.behind,
+            status: row.workspace?.workspaceInstance?.state,
         })
     },
     {
-        title: 'State',
-        field: 'state',
+        title: 'Open',
+        field: 'Open',
         width: 'auto',
         cellStyle: { whiteSpace: 'nowrap' },
-        render: (row: Partial<CustomWorkspace>) => getWorkspaceState({
-            status: row.workspace?.workspaceInstance?.state,
-        }),
+        render: (row: Partial<CustomWorkspace>) => getWorkspaceOpenButton({
+            name: row.workspace?.id,
+            domain: row.domain,
+        })
     },
 ];
 

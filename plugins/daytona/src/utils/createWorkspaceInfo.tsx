@@ -1,5 +1,8 @@
-import { Box, Link } from "@material-ui/core";
+import { Box, Button, Link, Tooltip } from "@material-ui/core";
 import React from "react";
+import { getGitStatus } from "./getGitStatus";
+import { State } from "../types";
+import { getWorkspaceState } from "./getWorkspaceState";
 
 /**
  * Returns the Git status view of the Codespace compared the reference branch
@@ -11,19 +14,57 @@ export const createWorkspaceInfo = (props: {
     name?: string;
     domain?: string;
     team?: string;
+    branch?: string;
+    ahead?: number;
+    behind?: number;
+    status?: State;
 }) => {
-  const { name, domain, team } = props;
-  const url = `https://${name}.${domain}`
+  const { name, branch, ahead, behind, status } = props;
+  const aheadBehind = getGitStatus({ahead, behind});
+  const statusIndicator = getWorkspaceState({status});
   
   return (
-    <Box alignItems="center">
-      {loadUrl({name, url})}
-      <span style={{display: 'flex', font: 'unset', marginTop: '1%', color: 'inherit'}}>
-        {team}
-      </span>
-    </Box>
+    <div style={{display: 'flex', flexDirection: 'row'}}>
+      {/* <div style={{padding: '1%', fontSize: '0.9vw',}}>{team}</div> */}
+      <div>
+        <Box alignItems="center">
+          {name}
+          <span style={{display: 'flex', fontSize: '0.4vw', font: 'caption', marginTop: '1%', marginLeft: 'auto'}}>
+            <div style={{padding: '1%', margin: '1%'}}>{statusIndicator}</div>
+            <div style={{padding: '1%', margin: '1%'}}>{branch}</div>
+            <div style={{padding: '1%', margin: '1%'}}>{aheadBehind}</div>
+          </span>
+        </Box>
+      </div>
+    </div>
   );
 };
+
+export const getWorkspaceOpenButton = (props: {
+    name?: string;
+    domain?: string;
+}) => {
+    const { name, domain } = props;
+    const openUrl = `https://${name}.${domain}`;
+
+    const openInNewTab = (url: string): void => {
+      const newWindow = window.open(url, '_blank', 'noopener,noreferrer')
+      if (newWindow) newWindow.opener = null
+    }
+
+    return (
+        <Tooltip placement="top" arrow title="Open">
+          <Button
+            variant="outlined"
+            color="primary"
+            // Calling getAccessToken instead of a plain signIn because we are going to get the correct scopes right away. No need to second request
+            onClick={() => openInNewTab(`${openUrl}`)}
+          >
+            Open
+          </Button>
+        </Tooltip>
+    );
+}
 
 /**
 * Returns the Git status of the Codespace compared the reference branch
@@ -33,7 +74,7 @@ export const createWorkspaceInfo = (props: {
 * @param props - the argument with ahead and behind value
 * @returns the value with Commit Status in the format ahead/behind
 */
-function loadUrl({
+export function loadUrl({
     name,
     url
   }: {
