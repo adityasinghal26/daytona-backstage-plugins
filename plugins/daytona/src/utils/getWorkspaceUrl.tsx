@@ -29,7 +29,7 @@ export const getWorkspaceUrl = (props: {
 * @param props - the argument with ahead and behind value
 * @returns the value with Commit Status in the format ahead/behind
 */
-export function loadUrl({
+function loadUrl({
   name,
   url
 }: {
