@@ -12,6 +12,8 @@ apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
   name: example-website
+  annotations:
+    daytona.io/repo-url: https://github.com/daytonaio-templates/go
 spec:
   type: website
   lifecycle: experimental
